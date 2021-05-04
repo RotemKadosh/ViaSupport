@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="viewModel"
+        type="com.example.support.member.MemberViewModel" />
+</data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/main_photo_image"
+            android:layout_width="385dp"
+            android:layout_height="269dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:ignore="MissingClass" />
+
+        <TextView
+            android:id="@+id/member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.selectedProperty.firstName + viewModel.selectedProperty.lastName}"
+            android:textColor="#de000000"
+            android:textSize="39sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
+            tools:text="Rotem Kadosh" />
+
+
+        <ImageView
+            android:id="@+id/available_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{viewModel.displayAvailability.toString()}"
+            app:layout_constraintBottom_toBottomOf="@+id/main_photo_image"
+            app:layout_constraintEnd_toEndOf="@+id/main_photo_image"
+            app:layout_constraintHorizontal_bias="0.988"
+            app:layout_constraintStart_toStartOf="@+id/main_photo_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97"
+            app:srcCompat="@android:drawable/presence_online" />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@{viewModel.selectedProperty.phone}"
+            app:layout_constraintEnd_toEndOf="@+id/member_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/member_name"
+            app:layout_constraintTop_toBottomOf="@+id/member_name"
+            tools:text="000-000-0000"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@{viewModel.selectedProperty.email}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/phone_number"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/phone_number"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="0000@email.com" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
